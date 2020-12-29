@@ -132,7 +132,18 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Python', 'Pytorch', 'Scikit-learn', 'Docker', 'SQL/NoSQL', 'Javascript'];
+  const skills = [
+    'Python',
+    'Kubernetes',
+    'Pytorch',
+    'Scikit-learn',
+    'Docker',
+    'SQL/NoSQL',
+    'Javascript',
+    'Argo',
+    'Prefect',
+    'Grafana',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -142,9 +153,9 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I have a master in Electrical and Computer Engineering from {' '}
+              I have a master in Electrical and Computer Engineering from{' '}
               <a href="https://tecnico.ulisboa.pt/en/">Instituto Superior Tecnico</a>. My interest
-              in machine learning grows while doing my {' '}
+              in machine learning grows while doing my{' '}
               <a href="https://fenix.tecnico.ulisboa.pt/cursos/meec/dissertacao/565303595501982">
                 master thesis
               </a>
@@ -161,8 +172,8 @@ const About = () => {
 
             <p>
               I also understood that life is not perfect and that you will always need to do
-              something that you don't like but you need to or you will have to do something that you
-              are not comfortable. Solution? Never stop learning and never be too comfortable!
+              something that you don't like but you need to or you will have to do something that
+              you are not comfortable. Solution? Never stop learning and never be too comfortable!
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>

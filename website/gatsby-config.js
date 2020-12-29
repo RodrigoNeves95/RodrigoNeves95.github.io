@@ -1,13 +1,13 @@
 const config = require('./src/config');
 
 module.exports = {
+  pathPrefix: '/website',
   siteMetadata: {
     title: 'Rodrigo Neves',
-    description:
-      'Rodrigo Neves is a Machine Learning Engineer.',
+    description: 'Rodrigo Neves is a Machine Learning Engineer.',
     siteUrl: 'https://rnve.es', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@Rneves27'
+    twitterUsername: '@Rneves27',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
