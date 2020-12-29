@@ -52,11 +52,10 @@ const Hero = () => {
   const three = <h3 className="big-heading">Rodrigo Neves virtual home!</h3>;
   const four = (
     <div>
+      <p>Machine Learning Engineer, currently based in Lisbon.</p>
       <p>
-        Machine Learning Engineer, currently based on Lisbon.
-      </p>
-      <p>
-        <i>"Only a few know how much one must know to know how little one knows"</i> - Werner Heisenberg
+        <i>"Only a few know how much one must know to know how little one knows"</i> - Werner
+        Heisenberg
       </p>
     </div>
   );
