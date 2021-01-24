@@ -84,48 +84,13 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledLinks = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  ul {
-    ${({ theme }) => theme.mixins.flexBetween};
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    li {
-      margin: 0 5px;
-      position: relative;
-      counter-increment: item 1;
-      font-size: var(--fz-xs);
-
-      a {
-        padding: 10px;
-
-        &:before {
-          content: '•';
-          margin-right: 5px;
-          color: var(--green);
-          font-size: var(--fz-xxs);
-          text-align: right;
-        }
-      }
-    }
-  }
-
-  .resume-button {
+const StyledHomeButton = styled(Link)`
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
     font-size: var(--fz-xs);
-  }
 `;
 
-const Nav = ({ isHome }) => {
+const Logo = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
@@ -170,52 +135,23 @@ const Nav = ({ isHome }) => {
           )}
         </TransitionGroup>
 
-        <StyledLinks>
-          <ul>
-            <TransitionGroup component={null}>
-              {isMounted &&
-                navLinks &&
-                navLinks.map(({ url, name }, i) => (
-                  <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
-                    <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                      <Link to={url}>{name}</Link>
-                    </li>
-                  </CSSTransition>
-                ))}
-            </TransitionGroup>
-          </ul>
-
-          <TransitionGroup component={null}>
-            {isMounted && (
-              <CSSTransition classNames={fadeDownClass} timeout={timeout}>
-                <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
-                  <a
-                    className="resume-button"
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Resume
-                  </a>
-                </div>
-              </CSSTransition>
-            )}
-          </TransitionGroup>
-        </StyledLinks>
-
         <TransitionGroup component={null}>
           {isMounted && (
-            <CSSTransition classNames={fadeClass} timeout={timeout}>
-              <Menu />
+            <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+              <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                <StyledHomeButton to="/">Go Home</StyledHomeButton>
+              </div>
             </CSSTransition>
           )}
         </TransitionGroup>
+
       </StyledNav>
     </StyledHeader>
   );
 };
 
-Nav.propTypes = {
+Logo.propTypes = {
   isHome: PropTypes.bool,
 };
 
-export default Nav;
+export default Logo;
