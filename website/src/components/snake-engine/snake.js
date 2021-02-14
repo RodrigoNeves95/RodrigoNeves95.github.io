@@ -2,7 +2,6 @@ import React from 'react';
 import GameOver from './GameOver.js';
 import '../../styles/gameboard.css';
 
-
 class Snake extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,7 @@ class Snake extends React.Component {
       height: 0,
       blockWidth: 0,
       blockHeight: 0,
-      gameLoopTimeout: 25,
+      gameLoopTimeout: 50,
       timeoutId: 0,
       startSnakeSize: 0,
       snake: [],
@@ -211,6 +210,9 @@ class Snake extends React.Component {
     }
 
     let newDirection = this.state.direction;
+    let gameLoopTimeout = this.state.gameLoopTimeout;
+
+    console.log(event);
 
     if (this.state.directionChanged) return;
 
@@ -235,9 +237,17 @@ class Snake extends React.Component {
       case 83:
         newDirection = this.state.direction === 'up' ? 'up' : 'down';
         break;
+      case 187:
+        gameLoopTimeout = gameLoopTimeout - 5;
+        gameLoopTimeout = gameLoopTimeout > 25 ? gameLoopTimeout : 25;
+        break;
+      case 189:
+        gameLoopTimeout = gameLoopTimeout + 5;
+        gameLoopTimeout = gameLoopTimeout < 100 ? gameLoopTimeout : 100;
+        break;
       default:
     }
-    this.setState({ directionChanged: true, direction: newDirection });
+    this.setState({ directionChanged: true, direction: newDirection, gameLoopTimeout });
   }
 
   componentDidMount() {
@@ -299,6 +309,21 @@ class Snake extends React.Component {
         />
         <div id="Score" style={{ fontSize: this.state.width / 20 }}>
           HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE: {this.state.score}
+        </div>
+        <div id="Options" style={{ fontSize: this.state.width / 20 }}>
+          <p>
+            <span>A - LEFT - Move Left</span>
+            <br />
+            <span>W - UP - Move Up</span>
+            <br />
+            <span>S - DOWN - Move Down</span>
+            <br />
+            <span>D - RIGHT - More Right</span>
+            <br />
+            <span>+ -> Increase Snake Speed</span>
+            <br />
+            <span>- -> Decrease Snake Speed</span>
+          </p>
         </div>
       </div>
     );

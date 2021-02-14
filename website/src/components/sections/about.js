@@ -153,27 +153,33 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I have a master in Electrical and Computer Engineering from{' '}
-              <a href="https://tecnico.ulisboa.pt/en/">Instituto Superior Tecnico</a>. My interest
-              in machine learning grows while doing my{' '}
+              I have a Msc. in Electrical and Computer Engineering from{' '}
+              <a href="https://tecnico.ulisboa.pt/en/">
+                Instituto Superior Tecnico - University of Lisbon
+              </a>
+              . My adventure in the area of machine learning started with my{' '}
               <a href="https://fenix.tecnico.ulisboa.pt/cursos/meec/dissertacao/565303595501982">
                 master thesis
               </a>
-              .
+              . It was a perfect way of preparing my foundations and understand that this could be
+              something that I would like to to on a daily basis.
+            </p>
+            <p>
+              I'm currently working as a Software/Machine Learning enginer at a start-up with a
+              focus on building predictive solutions for the energy and heavy industry sector.
+              Having been working for 3+ years in a start-up, allowed me to learn, develop and
+              broaden my knowledge and skills in several technical and non-technical areas at a pace
+              that I was not expecting, while having a lof of fun in the way!
             </p>
 
             <p>
-              After my graduation, I joined Jungle, where I had an outstanding opportunity to
-              understand how impactful and innovative can be the application of machine learning to
-              the problems of every day. More important than that, I kept growing professionally,
-              and the interest and curiosity to learn new technologies and to broaden my skills
-              never ceased.
-            </p>
-
-            <p>
-              I also understood that life is not perfect and that you will always need to do
-              something that you don't like but you need to or you will have to do something that
-              you are not comfortable. Solution? Never stop learning and never be too comfortable!
+              Since this is my first professional experience I also have been learning that life is
+              not perfect and that you will always end up to do something that you think it's
+              unnecessary. Well, all of this makes part of the process, right? I also learned
+              something really important about myself, which is, I love(need) to feel challenged and
+              uncomfortable on a daily basis, otherwise something is not OK! I present myself as a
+              person that is eager to learn, loves a good challenge, likes to ask questions, do not
+              like inefficiencies, aims for excellence and is always ready to help.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>

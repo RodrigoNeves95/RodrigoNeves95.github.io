@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Head, Snake, Social, Nav, Logo, Email, Footer } from '@components';
+import { Head, Loader, Snake, Social, Logo, Email } from '@components';
 import { navDelay } from '@utils';
 import { GlobalStyle, theme } from '@styles';
 
@@ -18,12 +17,7 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
-const StyledHomeButton = styled(Link)`
-  ${({ theme }) => theme.mixins.bigButton};
-  margin-top: 0px;
-`;
-
-const SnakePage = ({ location }) => {
+const SnakePage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const isHome = true;
   const [setIsLoading] = useState(isHome);

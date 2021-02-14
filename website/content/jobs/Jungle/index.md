@@ -1,13 +1,13 @@
 ---
 date: '2020-12-22'
-title: 'Machine Learning Engineer'
+title: 'Master thesis internship'
 company: 'Jungle'
 location: 'Lisbon, Portugal'
-range: 'May 2018 -  Present'
+range: 'August 2017 - May 2018'
 url: 'https://www.jungle.ai/'
 ---
 
-- Research and implementation of predictive maintenance solutions
-- Development and deployment models to Jungle product, using mostly python, pytorch and kubernetes
-- Implementation of KPI and bussiness inteliggence metrics for Jungle product
-- Integrated team that planned and implemented jungle infrastructure and production environment
+- Had the opportunity to do my master thesis work in a professional environment. The main research goal was to study, implement
+and test the performance of different deep learning models and architectures applied to time-series problems, specifically on the
+area of predictive maintenance and forecasting. This allowed me to be an active member of Jungle’s daily projects to establish their
+technology.

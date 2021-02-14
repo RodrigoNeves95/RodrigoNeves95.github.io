@@ -4,7 +4,7 @@ module.exports = {
   pathPrefix: '/website',
   siteMetadata: {
     title: 'Rodrigo Neves',
-    description: 'Rodrigo Neves is a Machine Learning Engineer.',
+    description: 'Rodrigo Neves - Machine Learning Engineer.',
     siteUrl: 'https://rnve.es', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@Rneves27',
