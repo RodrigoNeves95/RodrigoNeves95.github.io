@@ -1,4 +1,7 @@
 #!/bin/bash
+cd resume
+make cv
+cd ../
 cp resume/resume/resume.pdf website/static/resume.pdf
 cd website/
 npm run build
