@@ -1,5 +1,7 @@
 #!/bin/bash
-npm run build website/
+cd website/
+npm run build
+cd ../
 rm -r docs/
 cp -r website/public docs/
 cp CNAME docs/
