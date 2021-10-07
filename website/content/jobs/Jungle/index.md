@@ -8,7 +8,7 @@ range: 'May 2018 -  June 2021'
 url: 'https://www.jungle.ai/'
 ---
 
-- Researched and implemented Jungle’s core approach to predictive modelling with a emphasis on recurrent models and time series mainly using Pytorch.
+- Researched and implemented Jungle’s core approach to predictive modelling with an emphasis on recurrent models and time series mainly using Pytorch.
 
 - Active member of 5+ projects within the energy and heavy industry sector with the main purpose of showing Jungle’s predictive solutions.
 
@@ -24,5 +24,4 @@ url: 'https://www.jungle.ai/'
 - Implemented, deployed and maintained several high-performing, scalable and distributed workflows using Argo and Kubernetes to
   different business needs.
 
-- Designed, built and managed an internal dashboards and data warehouse solution using InfluxDB and Grafana to allow for high-
-  volume data analysis.
+- Designed, built and managed internal dashboards and data warehouse solutions using InfluxDB and Grafana to allow for high-volume data analysis.

@@ -174,18 +174,19 @@ const About = () => {
                 master thesis
               </a>
               . I had the chance to develop it in collaboration with{' '}
-              <a href="https://www.jungle.ai/">Jungle</a>, which offered me the perfect setup to
-              develop my skills while being an active member of daily operations on a professional
-              setup.
+              <a href="https://www.jungle.ai/">Jungle</a>, which offered me the perfect environment
+              to develop my skills while being an active member of daily operations on a
+              professional setup.
             </p>
 
             <p>
               During my career, I have had the opportunity to work in multiple positions and with
-              different technologies, which allow me to understand how the various areas of software
-              development from a machine learning project should interact with each other. From a
-              simple model, developed on a notebook, going into database structure and management,
-              until product deployment. Nevertheless, I still have a lot to learn and it seems that
-              every day there is something new to learn which is both exciting and terrifying.
+              different technologies, which helps me to understand the various steps and areas, and
+              how they interact, in a software development project focused on machine learning
+              solutions. From a simple model, developed on a notebook, going into database structure
+              and management, until product deployment. Nevertheless, I know that I still have a lot
+              to learn and it seems that every day there is something new to learn which is both
+              exciting and terrifying.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>
