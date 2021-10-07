@@ -18,6 +18,7 @@ const StyledAboutSection = styled.section`
     }
   }
 `;
+
 const StyledText = styled.div`
   ul.skills-list {
     display: grid;
@@ -45,6 +46,7 @@ const StyledText = styled.div`
     }
   }
 `;
+
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
@@ -143,6 +145,8 @@ const About = () => {
     'Argo',
     'Prefect',
     'Grafana',
+    'PostgreSQL',
+    'MLFlow',
   ];
 
   return (
@@ -153,33 +157,35 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I have a Msc. in Electrical and Computer Engineering from{' '}
-              <a href="https://tecnico.ulisboa.pt/en/">
-                Instituto Superior Tecnico - University of Lisbon
-              </a>
-              . My adventure in the area of machine learning started with my{' '}
+              I'm currently working as a contractor for a consultant{' '}
+              <a href="https://daredata.engineering/home">company</a> as a machine learning
+              engineer. Before that, I started my career working on a{' '}
+              <a href="https://www.jungle.ai/">start-up</a> with a focus on building predictive
+              maintenance solutions for the energy and heavy industry sector. I joined right after
+              finishing my master thesis working on a pure data science position, but steady and
+              slowly started to earn more responsibility and work on multiple positions, ranging
+              from software engineering until MLOps or even full-stack engineering.
+            </p>
+            <p>
+              I received a master's degree in Electrical and Computer Engineering from{' '}
+              <a href="https://tecnico.ulisboa.pt/en/">Instituto Superior Tecnico</a>. My first real
+              contact with machine learning and software development started during my{' '}
               <a href="https://fenix.tecnico.ulisboa.pt/cursos/meec/dissertacao/565303595501982">
                 master thesis
               </a>
-              . It was a perfect way of preparing my foundations and understand that this could be
-              something that I would like to to on a daily basis.
-            </p>
-            <p>
-              I'm currently working as a Software/Machine Learning enginer at a start-up with a
-              focus on building predictive solutions for the energy and heavy industry sector.
-              Having been working for 3+ years in a start-up, allowed me to learn, develop and
-              broaden my knowledge and skills in several technical and non-technical areas at a pace
-              that I was not expecting, while having a lof of fun in the way!
+              . I had the chance to develop it in collaboration with{' '}
+              <a href="https://www.jungle.ai/">Jungle</a>, which offered me the perfect setup to
+              develop my skills while being an active member of daily operations on a professional
+              setup.
             </p>
 
             <p>
-              Since this is my first professional experience I also have been learning that life is
-              not perfect and that you will always end up to do something that you think it's
-              unnecessary. Well, all of this makes part of the process, right? I also learned
-              something really important about myself, which is, I love(need) to feel challenged and
-              uncomfortable on a daily basis, otherwise something is not OK! I present myself as a
-              person that is eager to learn, loves a good challenge, likes to ask questions, do not
-              like inefficiencies, aims for excellence and is always ready to help.
+              During my career, I have had the opportunity to work in multiple positions and with
+              different technologies, which allow me to understand how the various areas of software
+              development from a machine learning project should interact with each other. From a
+              simple model, developed on a notebook, going into database structure and management,
+              until product deployment. Nevertheless, I still have a lot to learn and it seems that
+              every day there is something new to learn which is both exciting and terrifying.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>

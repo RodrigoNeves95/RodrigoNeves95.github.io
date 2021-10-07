@@ -1,13 +1,28 @@
 ---
 date: '2020-12-22'
-title: 'Master thesis internship'
+title: 'Machine Learning Engineer'
+tab: 'Jungle'
 company: 'Jungle'
 location: 'Lisbon, Portugal'
-range: 'August 2017 - May 2018'
+range: 'May 2018 -  June 2021'
 url: 'https://www.jungle.ai/'
 ---
 
-- Had the opportunity to do my master thesis work in a professional environment. The main research goal was to study, implement
-and test the performance of different deep learning models and architectures applied to time-series problems, specifically on the
-area of predictive maintenance and forecasting. This allowed me to be an active member of Jungle’s daily projects to establish their
-technology.
+- Researched and implemented Jungle’s core approach to predictive modelling with a emphasis on recurrent models and time series mainly using Pytorch.
+
+- Active member of 5+ projects within the energy and heavy industry sector with the main purpose of showing Jungle’s predictive solutions.
+
+- Designed, developed and build internal and production-ready software to meet product team and client requirements.
+
+- Designed and implemented a database architecture (Postgres and TimescaleDB) refactor to allow for a scalable, high-performing and
+  cost-effective solution.
+
+- Built an automated data collection and cleaning pipeline (AWS S3 and Prefect) to update data daily.
+
+- Built a CRUD RESTful API in Node.js for TimescaleDB and PostgresSQL database to be used by Jungle product.
+
+- Implemented, deployed and maintained several high-performing, scalable and distributed workflows using Argo and Kubernetes to
+  different business needs.
+
+- Designed, built and managed an internal dashboards and data warehouse solution using InfluxDB and Grafana to allow for high-
+  volume data analysis.
