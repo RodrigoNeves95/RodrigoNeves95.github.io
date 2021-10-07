@@ -185,8 +185,9 @@ const About = () => {
               how they interact, in a software development project focused on machine learning
               solutions. From a simple model, developed on a notebook, going into database structure
               and management, until product deployment. Nevertheless, I know that I still have a lot
-              to learn and it seems that every day there is something new to learn which is both
-              exciting and terrifying.
+              to learn and every day it seems that I know even less than the day before. The
+              development pace of new technologies, frameworks and tools can be daunting and
+              terrifying, but you will have to face it as new opportunities and excitement.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>
