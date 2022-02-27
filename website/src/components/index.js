@@ -13,3 +13,4 @@ export { default as About } from './sections/about';
 export { default as Jobs } from './sections/jobs';
 export { default as Contact } from './sections/contact';
 export { default as Snake } from './snake-engine/snake';
+export { default as JobsVertical } from './sections/jobs-vertical';

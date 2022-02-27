@@ -1,6 +1,6 @@
 ---
 date: '2020-12-23'
-title: 'Machine Learning'
+title: 'Machine Learning Engineer'
 tab: 'DareData Engineering'
 company: 'DareData Engineering'
 location: 'Lisbon, Portugal'
