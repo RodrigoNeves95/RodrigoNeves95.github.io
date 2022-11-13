@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://rnve.es/sitemap.xml
+Sitemap: https://rnve.es/sitemap-index.xml
 Host: https://rnve.es
