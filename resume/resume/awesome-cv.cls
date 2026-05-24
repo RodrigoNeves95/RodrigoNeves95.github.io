@@ -589,23 +589,26 @@
 % Define an environment for cventry
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
-  \begin{center}
+  \begin{flushleft}
 }{%
-  \end{center}
+  \end{flushleft}
 }
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
-  \end{tabular*}%
+  \vspace{-0.5mm}%
+  \par\noindent%
+  \ifblank{#2#3}{%
+    \makebox[\textwidth][s]{\entrypositionstyle{#1}\hfill\entrydatestyle{#4}}%
+    \par%
+  }{%
+    \makebox[\textwidth][s]{\entrytitlestyle{#2}\hfill\entrylocationstyle{#3}}%
+    \par%
+    \makebox[\textwidth][s]{\entrypositionstyle{#1}\hfill\entrydatestyle{#4}}%
+    \par%
+  }%
+  \descriptionstyle{#5}\par%
+  \vspace{1.5mm}%
 }
 
 % Define an environment for cvsubentry
@@ -670,7 +673,7 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4.0mm}
+  \vspace{-2.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
@@ -678,7 +681,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  \vspace{-2.0mm}
 }
 
 
