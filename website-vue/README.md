@@ -29,4 +29,6 @@ If deploying with Cloudflare Workers static assets, `wrangler.jsonc` enables SPA
 For Workers builds, use:
 
 - Build command: `pnpm build`
-- Deploy command: `pnpm deploy`
+- Deploy command: `pnpm run deploy`
+
+Wrangler requires Node 22+. Set `NODE_VERSION=22` in Cloudflare, and use Node 22 locally when running `pnpm run deploy`.
