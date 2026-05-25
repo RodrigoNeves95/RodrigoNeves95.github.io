@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --navy: #000000;
+  --light-navy: #172a45;
+  --lightest-navy: #eca72c;
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --slate: #c7c9ce;
+  --light-slate: #eca72c;
+  --lightest-slate: #ffffff;
+  --white: #ffffff;
+  --green: #eca72c;
+  --green-tint: rgba(236, 167, 44, 0.1);
+  --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --fz-xxs: 12px;
+  --fz-xs: 13px;
+  --fz-sm: 14px;
+  --fz-md: 16px;
+  --fz-lg: 18px;
+  --fz-xl: 20px;
+  --fz-xxl: 22px;
+  --fz-heading: 32px;
+  --border-radius: 4px;
+  --nav-height: 100px;
+  --nav-scroll-height: 70px;
+  --tab-height: 42px;
+  --tab-width: 120px;
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src:
+    url('@/assets/fonts/Calibre/Calibre-Regular.woff2') format('woff2'),
+    url('@/assets/fonts/Calibre/Calibre-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src:
+    url('@/assets/fonts/Calibre/Calibre-Medium.woff2') format('woff2'),
+    url('@/assets/fonts/Calibre/Calibre-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src:
+    url('@/assets/fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),
+    url('@/assets/fonts/Calibre/Calibre-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src:
+    url('@/assets/fonts/Calibre/Calibre-RegularItalic.woff2') format('woff2'),
+    url('@/assets/fonts/Calibre/Calibre-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'SF Mono';
+  src:
+    url('@/assets/fonts/SFMono/SFMono-Regular.woff2') format('woff2'),
+    url('@/assets/fonts/SFMono/SFMono-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'SF Mono';
+  src:
+    url('@/assets/fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),
+    url('@/assets/fonts/SFMono/SFMono-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: auto;
+}
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--navy);
+  color: var(--slate);
+  font-family: var(--font-sans);
+  font-size: var(--fz-xl);
+  line-height: 1.3;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: var(--fz-lg);
+  }
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--font-sans);
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  transition: var(--transition);
+}
+
+a:hover,
+a:focus {
+  color: var(--green);
+}
+
+button {
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+p {
+  margin: 0 0 15px;
+}
+
+p:last-child,
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 10px;
+  color: var(--lightest-slate);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+img,
+svg {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+::selection {
+  background-color: var(--slate);
+  color: var(--lightest-slate);
+}
+
+@layer components {
+  .page-shell {
+    counter-reset: section;
+    @apply mx-auto min-h-screen w-full max-w-[1600px] px-[150px] max-[1080px]:px-[100px] max-md:px-[50px] max-sm:px-[25px];
+  }
+
+  .container-section {
+    @apply mx-auto max-w-[1000px] px-0 py-[100px] max-md:py-20 max-sm:py-[60px];
+  }
+
+  .section-heading {
+    counter-increment: section;
+    @apply relative my-[10px] mb-10 flex w-full items-center whitespace-nowrap text-[clamp(26px,5vw,32px)] font-semibold text-slate-lighter;
+  }
+
+  .section-heading::before {
+    content: '0' counter(section) '.';
+    @apply relative bottom-1 mr-[10px] font-mono text-[clamp(16px,3vw,20px)] font-normal text-mint max-sm:mr-[5px];
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply relative -top-[5px] ml-5 block h-px w-[300px] bg-mint max-[1080px]:w-[200px] max-md:w-full max-[600px]:ml-[10px];
+  }
+
+  .big-heading {
+    @apply m-0 text-[clamp(40px,8vw,80px)] leading-[1.1];
+  }
+
+  .accent-link {
+    @apply relative inline-block text-mint transition hover:text-mint focus:text-mint focus:outline-none;
+  }
+
+  .accent-link::after {
+    content: '';
+    @apply relative bottom-[0.37em] block h-px w-0 bg-mint opacity-50 transition-all;
+  }
+
+  .accent-link:hover::after,
+  .accent-link:focus::after {
+    @apply w-full;
+  }
+
+  .button-link {
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-7 py-5 font-mono text-sm leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+  }
+
+  .small-button-link {
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-4 py-3 font-mono text-[13px] leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+  }
+}
