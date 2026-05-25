@@ -94,7 +94,7 @@ export const jobs: Job[] = [
   },
   {
     title: 'Machine Learning Engineer',
-    tab: 'DareData Engineering',
+    tab: 'DareData',
     company: 'DareData Engineering',
     range: 'June 2021 - 2024',
     url: 'https://www.daredata.ai/',
