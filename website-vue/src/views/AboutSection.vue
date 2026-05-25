@@ -10,26 +10,36 @@ import { skills } from '@/data/site';
     <div class="grid gap-[50px] md:grid-cols-[3fr_2fr]">
       <div>
         <p>
-          I'm a product-minded engineer currently working at
-          <a class="accent-link" href="https://www.anaplan.com/">Anaplan</a>. My background sits at
-          the intersection of machine learning, software engineering, and product delivery, with a
-          strong bias toward systems that are useful, maintainable, and ready for real users.
+          I'm a product and staff engineer currently working in the AI Engineering Division at
+          <a class="accent-link" href="https://www.anaplan.com/">Anaplan</a>. After helping carry
+          Syrup's product and architecture into Anaplan's enterprise environment, I'm now focused on
+          innovation-track work for native agentic and conversational platform capabilities.
         </p>
         <p>
-          Before Anaplan, I worked with
+          That means working close to the core of modern AI product engineering: agents, chat
+          experiences, MCP-style tool integrations, retrieval and vector search, and the
+          architecture needed to make those systems reliable inside a large-scale product.
+        </p>
+        <p>
+          Before Anaplan, I was a founding engineer at
           <a class="accent-link" href="https://www.syrup.tech/">Syrup Tech</a>
-          on AI/ML-powered inventory decision-making software for commerce, growing from machine
-          learning engineering into full-stack and staff-level responsibilities. That role sharpened
-          the part of engineering I enjoy most: staying close to product needs while building
-          systems that can survive real operational use.
+          and grew into staff engineer responsibilities as the company scaled from 0-to-1 product
+          work into an enterprise-ready platform and
+          <a
+            class="accent-link"
+            href="https://www.anaplan.com/news/anaplan-announces-acquisition-of-syrup-tech/"
+          >
+            successful acquisition by Anaplan</a
+          >. I worked across the full stack: ML and data pipelines, backend services, frontend
+          workflows, cloud infrastructure, customer-facing technical leadership, and the practical
+          engineering systems needed for fast iteration.
         </p>
         <p>
           Earlier, I worked with
           <a class="accent-link" href="https://www.daredata.ai/">DareData</a>
           as a machine learning engineer consultant, helping teams move models and AI pipelines from
-          proof-of-concept into production. That work included MLOps pipelines, distributed model
-          optimization, cloud deployments, computer vision, NLP systems, and integrations across
-          Azure, GCP, Kubernetes, Airflow, Databricks, and MLflow.
+          proof-of-concept into production across MLOps, distributed optimization, cloud
+          deployments, computer vision, NLP, and enterprise integrations.
         </p>
         <p>
           I started my professional path at
@@ -42,7 +52,18 @@ import { skills } from '@/data/site';
           I received a master's degree in Electrical and Computer Engineering from
           <a class="accent-link" href="https://tecnico.ulisboa.pt/en/">
             Instituto Superior Tecnico</a
-          >, with a thesis focused on deep learning strategies for time-series prediction.
+          >, with a
+          <a
+            class="accent-link"
+            href="https://fenix.tecnico.ulisboa.pt/downloadFile/563345090416188/Thesis.pdf"
+          >
+            thesis focused on deep learning strategies for time-series prediction</a
+          >.
+        </p>
+        <p>
+          I also care a lot about AI-assisted engineering. The tools are changing quickly, but the
+          bar is not lower: strong fundamentals, good product judgment, and critical thinking matter
+          more when development loops get faster.
         </p>
         <p>Here are a few technologies I've worked with recently:</p>
 

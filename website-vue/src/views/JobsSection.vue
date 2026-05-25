@@ -106,6 +106,18 @@ const selectNext = () => {
               <span>{{ bullet }}</span>
             </li>
           </ul>
+          <ul v-if="activeJob.links?.length" class="mt-6 flex flex-wrap gap-3 p-0">
+            <li v-for="link in activeJob.links" :key="link.url" class="list-none">
+              <a
+                :href="link.url"
+                class="button-link px-4 py-2 text-[12px]"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
         </article>
       </Transition>
     </div>

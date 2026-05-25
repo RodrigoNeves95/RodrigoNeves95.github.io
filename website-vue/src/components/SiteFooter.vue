@@ -20,7 +20,15 @@ import { socialLinks } from '@/data/site';
       </li>
     </ul>
     <p class="font-mono text-[12px] leading-none text-slate-light">
-      Designed and built by Rodrigo Neves.
+      Built by Rodrigo Neves. Design inspired by
+      <a
+        class="accent-link"
+        href="https://github.com/bchiang7/v4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        bchiang7/v4</a
+      >.
     </p>
   </footer>
 </template>

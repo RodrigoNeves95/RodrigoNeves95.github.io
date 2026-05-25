@@ -38,7 +38,7 @@ router.afterEach((to) => {
       ? 'Page Not Found | Rodrigo Neves'
       : to.name === 'snake'
         ? 'Snake | Rodrigo Neves'
-        : 'Rodrigo Neves | Product Engineer & ML Engineer';
+        : 'Rodrigo Neves | Product Engineer';
   document.title = title;
 });
 
