@@ -11,11 +11,11 @@ pnpm build
 pnpm preview
 ```
 
-The site is static-first and deploys to Cloudflare Pages from `dist`.
+The site is static-first and deploys to Cloudflare from `dist`.
 
 ## Cloudflare Pages
 
-Use these settings when creating the Pages project:
+If using Pages static deploys, use these settings:
 
 - Root directory: `website-vue`
 - Build command: `pnpm build`
@@ -24,4 +24,9 @@ Use these settings when creating the Pages project:
   - `NODE_VERSION=22`
   - `PNPM_VERSION=9.15.1`
 
-The `public/_redirects` file keeps Vue Router routes working on direct page loads.
+If deploying with Cloudflare Workers static assets, `wrangler.jsonc` enables SPA fallback for direct route loads.
+
+For Workers builds, use:
+
+- Build command: `pnpm build`
+- Deploy command: `pnpm deploy`
