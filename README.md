@@ -25,4 +25,9 @@ The site is prepared for Cloudflare Pages:
 
 ## Resume
 
-The CV source lives in `resume/resume/`. The generated PDF is copied into `website-vue/public/resume.pdf` so the website can serve it.
+The CV source lives in `resume/resume/`. Build and publish it to the website with:
+
+```bash
+make -C resume publish-resume
+make -C resume verify
+```
