@@ -5,16 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc -b && vite build && node scripts/generate-static-routes.mjs",
     "deploy": "npx wrangler deploy",
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "vue-tsc -b",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run",
+    "test": "vitest run && node --test scripts/generate-static-routes.test.mjs",
     "test:e2e": "playwright test",
-    "check": "prettier --check . && eslint . && vue-tsc -b && vitest run && playwright test"
+    "check": "prettier --check . && eslint . && vue-tsc -b && vitest run && node --test scripts/generate-static-routes.test.mjs && playwright test"
   },
   "dependencies": {
     "lucide-vue-next": "^0.468.0",
@@ -41,7 +41,8 @@
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
     "vitest": "^4.1.10",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^2.2.0",
+    "wrangler": "^4.113.0"
   },
   "packageManager": "pnpm@9.15.1"
 }
