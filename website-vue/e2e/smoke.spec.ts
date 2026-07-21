@@ -10,6 +10,29 @@ test('loads the portfolio and navigates to Snake', async ({ page }) => {
   await page.getByRole('link', { name: 'Feeling Bored?' }).click();
   await expect(page).toHaveURL(/\/snake$/);
   await expect(page.getByRole('img', { name: 'Snake game board' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('img', { name: 'Snake game board' })).toBeVisible();
+});
+
+test('serves route-specific metadata and a real custom 404', async ({ page, request }) => {
+  const home = await request.get('/');
+  expect(home.status()).toBe(200);
+
+  const snake = await request.get('/snake');
+  expect(snake.status()).toBe(200);
+  expect(await snake.text()).toContain('<title>Snake | Rodrigo Neves</title>');
+  expect(await snake.text()).toContain('rel="canonical" href="https://rnev.es/snake"');
+
+  const missing = await request.get('/definitely-missing');
+  const missingHtml = await missing.text();
+  expect(missing.status()).toBe(404);
+  expect(missingHtml).toContain('<title>Page Not Found | Rodrigo Neves</title>');
+  expect(missingHtml).toContain('name="robots" content="noindex, nofollow"');
+  expect(missingHtml).not.toContain('rel="canonical"');
+
+  const response = await page.goto('/definitely-missing');
+  expect(response?.status()).toBe(404);
+  await expect(page.getByText('Page Not Found')).toBeVisible();
 });
 
 for (const viewport of [
