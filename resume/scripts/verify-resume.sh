@@ -19,5 +19,5 @@ normalize_pdf_text "$built_pdf" > "$temporary_directory/built.txt"
 diff -u "$temporary_directory/source.txt" "$temporary_directory/built.txt"
 
 pdfinfo "$built_pdf" | grep -Eq '^Pages:[[:space:]]+1$'
-pdfinfo "$built_pdf" | grep -Eq '^Page size:.*A4$'
+pdfinfo "$built_pdf" | grep -Eq '^Page size:.*\(A4\)$'
 grep -Fq 'rnev.es' "$temporary_directory/built.txt"
