@@ -8,7 +8,7 @@
   <SiteNav />
   <SocialRail />
   <EmailRail />
-  <main id="content" class="page-shell">
+  <main id="content" tabindex="-1" class="page-shell">
     <slot />
   </main>
   <SiteFooter />
