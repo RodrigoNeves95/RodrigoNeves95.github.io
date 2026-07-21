@@ -42,7 +42,12 @@ const selectNext = () => {
         @keydown.left.prevent="selectPrevious"
         @keydown.right.prevent="selectNext"
       >
-        <li v-for="(job, index) in jobs" :key="job.company + job.range" class="job-tab-item">
+        <li
+          v-for="(job, index) in jobs"
+          :key="job.company + job.range"
+          role="presentation"
+          class="job-tab-item"
+        >
           <button
             :id="`job-tab-${index}`"
             :ref="(element) => setTabRef(element, index)"
@@ -51,7 +56,7 @@ const selectNext = () => {
             :aria-selected="activeIndex === index"
             :aria-controls="`job-panel-${index}`"
             :tabindex="activeIndex === index ? 0 : -1"
-            class="job-tab-button flex h-[var(--tab-height)] w-full items-center whitespace-nowrap bg-transparent px-5 pb-0.5 text-left font-mono text-[13px] transition hover:bg-navy-light focus:bg-navy-light focus:outline-none max-md:px-[15px] max-[600px]:min-w-[var(--tab-width)] max-[600px]:justify-center max-[600px]:px-[15px] max-[600px]:text-center"
+            class="job-tab-button flex h-[var(--tab-height)] w-full items-center whitespace-nowrap bg-transparent px-5 pb-0.5 text-left font-mono text-[13px] transition hover:bg-navy-light focus:bg-navy-light max-md:px-[15px] max-[600px]:min-w-[var(--tab-width)] max-[600px]:justify-center max-[600px]:px-[15px] max-[600px]:text-center"
             :class="activeIndex === index ? 'text-mint' : 'text-slate'"
             @click="void selectJob(index)"
           >

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 test('loads the portfolio and navigates to Snake', async ({ page }) => {
   await page.goto('/');
@@ -10,6 +11,21 @@ test('loads the portfolio and navigates to Snake', async ({ page }) => {
   await expect(page).toHaveURL(/\/snake$/);
   await expect(page.getByRole('img', { name: 'Snake game board' })).toBeVisible();
 });
+
+for (const viewport of [
+  { name: 'mobile', width: 320, height: 800 },
+  { name: 'desktop', width: 1280, height: 900 },
+]) {
+  test(`has no serious accessibility violations at ${viewport.name} width`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+
+    const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+    expect(
+      results.violations.filter(({ impact }) => impact === 'critical' || impact === 'serious'),
+    ).toEqual([]);
+  });
+}
 
 test('plays Snake with touch controls at the minimum viewport', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
