@@ -1,5 +1,6 @@
-# Content
-Repository to my go-to CV and cover letter with a Latex template that compiles over a docker image.
+# Résumé sources
+
+Source and generated artifacts for Rodrigo Neves's résumé, plus a customizable LaTeX cover-letter template. The cover letter contains conspicuous placeholders and must be personalized before use.
 
 Work inspired from [https://github.com/sb2nov/resume](https://github.com/sb2nov/resume) and [https://github.com/posquit0/Awesome-CV](https://github.com/posquit0/Awesome-CV)
 
@@ -11,28 +12,27 @@ Example
 
 ## How-to
 
-There are few steps needed to build and create the CV and the cover letter. First you will need to build the docker image
+Build the Docker image first:
 
 ```
 make build
 ```
 
-Once this steps concludes you can create your CV or cover letter with the following commands:
+Then build the résumé with:
 
 ```
 make cv
 ```
-and
+Build a personalized cover letter with:
 ```
 make cover_letter
 ```
 
-Note: Once the build is done, both commands will try to open the file with [gio](http://manpages.ubuntu.com/manpages/bionic/man1/gio.1.html) CLI. You will find the PDFs inside `resume` folder.
+The cover-letter PDF is intentionally ignored by Git. Review and replace every angle-bracketed placeholder in `resume/coverletter.tex` before using it.
 
 ---
 ## Small guidelines
 
-There are two main files inside `resume/` folder, one for the CV(resume.tex) and the other for the cover letter(coverletter.tex). Both of them are fully customazible. Each file has multiple comments, explaining how you can make modifications to the layout and/or content. 
+There are two main files inside `resume/`: `resume.tex` for the résumé and `coverletter.tex` for the cover-letter template. Both can be customized. Each file includes comments explaining the layout and content.
 
-Regarding the CV there is a specific file for each one of the sections, that you will need to change accorddingly to your will.
-
+The résumé has a separate source file for each included section under `resume/files/`.

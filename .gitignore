@@ -1,6 +1,15 @@
 **/.DS_Store
 tags
 
+# LaTeX build output
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+resume/resume/coverletter.pdf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
