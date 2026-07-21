@@ -11,6 +11,21 @@ pnpm build
 pnpm preview
 ```
 
+## Quality checks
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm exec playwright install chromium # first run only
+pnpm test:e2e
+pnpm check
+pnpm audit --prod
+```
+
+`pnpm check` runs formatting, linting, type checking, unit tests, a production build, and browser smoke tests.
+
 The site is static-first and deploys to Cloudflare from `dist`.
 
 ## Cloudflare Pages

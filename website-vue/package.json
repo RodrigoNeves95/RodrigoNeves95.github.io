@@ -9,7 +9,12 @@
     "deploy": "npx wrangler deploy",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "typecheck": "vue-tsc -b",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "prettier --check . && eslint . && vue-tsc -b && vitest run && playwright test"
   },
   "dependencies": {
     "lucide-vue-next": "^0.468.0",
@@ -17,20 +22,25 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
     "@eslint/js": "^9.17.0",
+    "@playwright/test": "^1.61.1",
     "@types/node": "^22.10.2",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.1.4",
+    "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.17.0",
     "eslint-plugin-vue": "^9.32.0",
+    "jsdom": "^29.1.1",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.3",
     "vite": "^6.0.5",
+    "vitest": "^4.1.10",
     "vue-tsc": "^2.2.0"
   },
   "packageManager": "pnpm@9.15.1"
