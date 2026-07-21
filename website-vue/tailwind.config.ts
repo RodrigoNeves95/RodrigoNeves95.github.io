@@ -16,8 +16,8 @@ export default {
         'slate-lighter': '#ffffff',
       },
       fontFamily: {
-        sans: ['Calibre', 'San Francisco', 'SF Pro Text', 'system-ui', 'sans-serif'],
-        mono: ['SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
       },
       boxShadow: {
         nav: '0 10px 30px -10px rgb(2 12 27 / 0.7)',

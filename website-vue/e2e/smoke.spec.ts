@@ -76,3 +76,37 @@ for (const route of ['/', '/snake', '/missing-page']) {
     await expect(page.locator('#content')).toBeFocused();
   });
 }
+
+for (const viewport of [
+  { name: 'mobile', width: 320, height: 800 },
+  { name: 'desktop', width: 1280, height: 900 },
+]) {
+  test(`licensed fonts do not introduce layout regressions at ${viewport.name} width`, async ({
+    page,
+  }) => {
+    await page.addInitScript(() => {
+      let cumulativeLayoutShift = 0;
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          const shift = entry as PerformanceEntry & { hadRecentInput: boolean; value: number };
+          if (!shift.hadRecentInput) cumulativeLayoutShift += shift.value;
+        }
+        document.documentElement.dataset.cumulativeLayoutShift = String(cumulativeLayoutShift);
+      }).observe({ type: 'layout-shift', buffered: true });
+    });
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+
+    const metrics = await page.evaluate(() => ({
+      bodyFont: getComputedStyle(document.body).fontFamily,
+      monoFont: getComputedStyle(document.querySelector('nav')!).fontFamily,
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      cls: Number(document.documentElement.dataset.cumulativeLayoutShift ?? 0),
+    }));
+    expect(metrics.bodyFont).toContain('Inter');
+    expect(metrics.monoFont).toContain('IBM Plex Mono');
+    expect(metrics.overflow).toBeLessThanOrEqual(0);
+    expect(metrics.cls).toBeLessThan(0.1);
+  });
+}
