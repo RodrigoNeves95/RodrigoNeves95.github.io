@@ -2,37 +2,38 @@
 
 Source and generated artifacts for Rodrigo Neves's résumé, plus a customizable LaTeX cover-letter template. The cover letter contains conspicuous placeholders and must be personalized before use.
 
-Work inspired from [https://github.com/sb2nov/resume](https://github.com/sb2nov/resume) and [https://github.com/posquit0/Awesome-CV](https://github.com/posquit0/Awesome-CV)
-
-Example
+The layout is inspired by [sb2nov/resume](https://github.com/sb2nov/resume) and [Awesome-CV](https://github.com/posquit0/Awesome-CV).
 
 ![Resume Screenshot](resume.png)
 
----
+## Commands
 
-## How-to
+Build the résumé from a clean checkout:
 
-Build the Docker image first:
-
-```
-make build
+```bash
+make resume
 ```
 
-Then build the résumé with:
+The generated file is written to `build/resume.pdf`. Build a personalized cover letter with:
 
-```
-make cv
-```
-Build a personalized cover letter with:
-```
-make cover_letter
+```bash
+make cover-letter
 ```
 
-The cover-letter PDF is intentionally ignored by Git. Review and replace every angle-bracketed placeholder in `resume/coverletter.tex` before using it.
+Publish the generated résumé to both tracked distribution locations:
 
----
-## Small guidelines
+```bash
+make publish-resume
+```
 
-There are two main files inside `resume/`: `resume.tex` for the résumé and `coverletter.tex` for the cover-letter template. Both can be customized. Each file includes comments explaining the layout and content.
+Verify that the tracked PDFs match each other and the current source:
 
-The résumé has a separate source file for each included section under `resume/files/`.
+```bash
+make verify
+```
+
+Use `make clean` to remove the temporary `build/` directory. The cover-letter PDF is intentionally ignored by Git. Review and replace every angle-bracketed placeholder in `resume/coverletter.tex` before using it.
+
+## Source layout
+
+The `resume/` directory contains `resume.tex` for the résumé and `coverletter.tex` for the cover-letter template. The résumé has a separate source file for each included section under `resume/files/`.
