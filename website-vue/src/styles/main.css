@@ -154,6 +154,11 @@ button {
   cursor: pointer;
 }
 
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
 p {
   margin: 0 0 15px;
 }
@@ -216,7 +221,7 @@ svg {
   }
 
   .accent-link {
-    @apply relative inline-block text-mint transition hover:text-mint focus:text-mint focus:outline-none;
+    @apply relative inline-block text-mint transition hover:text-mint focus:text-mint;
   }
 
   .accent-link::after {
@@ -230,10 +235,25 @@ svg {
   }
 
   .button-link {
-    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-7 py-5 font-mono text-sm leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-7 py-5 font-mono text-sm leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10;
   }
 
   .small-button-link {
-    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-4 py-3 font-mono text-[13px] leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-4 py-3 font-mono text-[13px] leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

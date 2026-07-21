@@ -2,7 +2,7 @@
   <RouterLink
     to="/"
     aria-label="Rodrigo Neves home"
-    class="inline-flex h-[42px] w-[42px] items-center justify-center text-mint transition hover:text-mint focus:text-mint focus:outline-none"
+    class="inline-flex h-[42px] w-[42px] items-center justify-center text-mint transition hover:text-mint focus:text-mint"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

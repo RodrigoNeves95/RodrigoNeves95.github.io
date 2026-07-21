@@ -8,7 +8,7 @@ import { email } from '@/data/site';
   >
     <a
       :href="`mailto:${email}`"
-      class="mx-auto my-5 p-[10px] font-mono text-[12px] tracking-[0.1em] transition [writing-mode:vertical-rl] hover:-translate-y-[3px] hover:text-mint focus:-translate-y-[3px] focus:text-mint focus:outline-none"
+      class="mx-auto my-5 p-[10px] font-mono text-[12px] tracking-[0.1em] transition [writing-mode:vertical-rl] hover:-translate-y-[3px] hover:text-mint focus:-translate-y-[3px] focus:text-mint"
     >
       {{ email }}
     </a>
