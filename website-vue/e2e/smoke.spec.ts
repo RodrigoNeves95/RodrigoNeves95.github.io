@@ -40,3 +40,16 @@ test('plays Snake with touch controls at the minimum viewport', async ({ page })
   await expect(board).toBeVisible();
   expect((await board.boundingBox())?.width).toBeLessThanOrEqual(272);
 });
+
+for (const route of ['/', '/snake', '/missing-page']) {
+  test(`${route} has one heading and a working skip link`, async ({ page }) => {
+    await page.goto(route);
+
+    await expect(page.locator('h1')).toHaveCount(1);
+    await page.keyboard.press('Tab');
+    const skipLink = page.getByRole('link', { name: 'Skip to content' });
+    await expect(skipLink).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#content')).toBeFocused();
+  });
+}
