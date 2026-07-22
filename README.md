@@ -15,13 +15,18 @@ pnpm build
 
 ## Deployment
 
-The site is prepared for Cloudflare Pages:
+Production is deployed through Cloudflare from `main`. GitHub Pages is disabled.
+
+Cloudflare uses:
 
 - Root directory: `website-vue`
 - Build command: `pnpm build`
 - Build output directory: `dist`
 - Node version: `22`
 - pnpm version: `9.15.1`
+
+Implementation PRs target `develop`. A release PR promotes `develop` to `main`
+using a regular merge commit; that merge starts the production deployment.
 
 ## Resume
 
