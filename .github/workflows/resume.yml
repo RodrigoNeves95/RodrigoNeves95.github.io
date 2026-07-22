@@ -2,13 +2,13 @@ name: Resume
 
 on:
   pull_request:
-    branches: [develop]
+    branches: [develop, main]
     paths:
       - "resume/**"
       - "website-vue/public/resume.pdf"
       - ".github/workflows/resume.yml"
   push:
-    branches: [develop]
+    branches: [develop, main]
     paths:
       - "resume/**"
       - "website-vue/public/resume.pdf"

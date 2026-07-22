@@ -28,9 +28,11 @@ pnpm audit --prod
 
 The site is static-first and deploys to Cloudflare from `dist`.
 
-## Cloudflare Pages
+## Cloudflare deployment
 
-If using Pages static deploys, use these settings:
+GitHub Pages is disabled. Production is deployed from `main` through Cloudflare.
+
+Use these build settings:
 
 - Root directory: `website-vue`
 - Build command: `pnpm build`
@@ -39,7 +41,8 @@ If using Pages static deploys, use these settings:
   - `NODE_VERSION=22`
   - `PNPM_VERSION=9.15.1`
 
-If deploying with Cloudflare Workers static assets, `wrangler.jsonc` enables SPA fallback for direct route loads.
+`wrangler.jsonc` configures Cloudflare Workers static assets and real static route
+responses.
 
 For Workers builds, use:
 
