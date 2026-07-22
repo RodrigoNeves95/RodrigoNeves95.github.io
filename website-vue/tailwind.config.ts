@@ -16,7 +16,7 @@ export default {
         'slate-lighter': '#ffffff',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Figtree', 'system-ui', 'sans-serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
       boxShadow: {

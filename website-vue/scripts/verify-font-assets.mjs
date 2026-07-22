@@ -8,10 +8,10 @@ const fontAssets = assetNames.filter((name) => /\.woff2?$/.test(name)).sort();
 const expectedFamilies = [
   'ibm-plex-mono-latin-400-normal',
   'ibm-plex-mono-latin-600-normal',
-  'inter-latin-400-italic',
-  'inter-latin-400-normal',
-  'inter-latin-500-normal',
-  'inter-latin-600-normal',
+  'figtree-latin-400-italic',
+  'figtree-latin-400-normal',
+  'figtree-latin-500-normal',
+  'figtree-latin-600-normal',
 ];
 
 assert.equal(fontAssets.length, expectedFamilies.length, `Unexpected font assets: ${fontAssets}`);
@@ -28,7 +28,7 @@ for (const expected of expectedFamilies) {
   );
 }
 assert.equal(
-  fontAssets.some((name) => /calibre|sfmono/i.test(name)),
+  fontAssets.some((name) => /calibre|sfmono|inter-/i.test(name)),
   false,
   'Superseded font emitted',
 );

@@ -5,7 +5,7 @@ import vue from 'eslint-plugin-vue';
 
 export default [
   {
-    ignores: ['dist', 'node_modules', '.vite'],
+    ignores: ['dist', 'node_modules', '.vite', '.wrangler'],
   },
   js.configs.recommended,
   ...vue.configs['flat/recommended'],
