@@ -1,40 +1,21 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
-type Direction = 'up' | 'down' | 'left' | 'right';
-type Point = { x: number; y: number };
+import { columns, type Direction, queueDirection, restartGame, rows, stepGame } from '@/game/snake';
 
-const columns = 30;
-const rows = 20;
-const initialSnake = (): Point[] => [
-  { x: 15, y: 10 },
-  { x: 14, y: 10 },
-  { x: 13, y: 10 },
-  { x: 12, y: 10 },
-  { x: 11, y: 10 },
-  { x: 10, y: 10 },
-];
-
-const snake = ref<Point[]>(initialSnake());
-const apple = ref<Point>({ x: 22, y: 10 });
-const direction = ref<Direction>('right');
-const nextDirection = ref<Direction>('right');
-const score = ref(0);
+const game = ref(restartGame());
 const highScore = ref(0);
-const gameOver = ref(false);
 const speed = ref(70);
 let intervalId: number | undefined;
 
-const boardStyle = computed(() => ({
+const boardStyle = {
   gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-  width: '40%',
-  minWidth: '30px',
-  maxWidth: 'calc(100vw - 48px)',
+  width: 'min(100%, 600px)',
   aspectRatio: `${columns} / ${rows}`,
-}));
+};
 
 const cells = computed(() => {
-  const snakeMap = new Map(snake.value.map((part, index) => [`${part.x},${part.y}`, index]));
+  const snakeMap = new Map(game.value.snake.map((part, index) => [`${part.x},${part.y}`, index]));
   return Array.from({ length: columns * rows }, (_, index) => {
     const x = index % columns;
     const y = Math.floor(index / columns);
@@ -44,82 +25,73 @@ const cells = computed(() => {
       key: `${x}-${y}`,
       isSnake: snakeIndex !== undefined,
       isHead: snakeIndex === 0,
-      isApple: apple.value.x === x && apple.value.y === y,
+      isApple: game.value.apple?.x === x && game.value.apple?.y === y,
     };
   });
 });
 
-const randomApple = () => {
-  const occupied = new Set(snake.value.map((part) => `${part.x},${part.y}`));
-  let point: Point;
+const liveMessage = computed(() => {
+  if (game.value.status === 'won') return `You won with a score of ${game.value.score}.`;
+  if (game.value.status === 'game-over') return `Game over. Score ${game.value.score}.`;
+  return `Score ${game.value.score}.`;
+});
 
-  do {
-    point = {
-      x: Math.floor(Math.random() * columns),
-      y: Math.floor(Math.random() * rows),
-    };
-  } while (occupied.has(`${point.x},${point.y}`));
-
-  apple.value = point;
+const readHighScore = () => {
+  try {
+    const stored = Number(window.localStorage.getItem('snakeHighScore'));
+    highScore.value = Number.isFinite(stored) && stored >= 0 ? stored : 0;
+  } catch {
+    highScore.value = 0;
+  }
 };
 
-const setDirection = (newDirection: Direction) => {
-  const opposites: Record<Direction, Direction> = {
-    up: 'down',
-    down: 'up',
-    left: 'right',
-    right: 'left',
-  };
-
-  if (opposites[direction.value] !== newDirection) {
-    nextDirection.value = newDirection;
+const saveHighScore = () => {
+  highScore.value = Math.max(highScore.value, game.value.score);
+  try {
+    window.localStorage.setItem('snakeHighScore', String(highScore.value));
+  } catch {
+    // Storage can be unavailable in privacy-restricted browsing contexts.
   }
+};
+
+const stopTimer = () => {
+  window.clearInterval(intervalId);
+  intervalId = undefined;
 };
 
 const tick = () => {
-  if (gameOver.value) return;
-
-  direction.value = nextDirection.value;
-  const head = snake.value[0];
-  const nextHead = { ...head };
-
-  if (direction.value === 'left') nextHead.x = head.x === 0 ? columns - 1 : head.x - 1;
-  if (direction.value === 'right') nextHead.x = head.x === columns - 1 ? 0 : head.x + 1;
-  if (direction.value === 'up') nextHead.y = head.y === 0 ? rows - 1 : head.y - 1;
-  if (direction.value === 'down') nextHead.y = head.y === rows - 1 ? 0 : head.y + 1;
-
-  if (snake.value.some((part) => part.x === nextHead.x && part.y === nextHead.y)) {
-    gameOver.value = true;
-    highScore.value = Math.max(highScore.value, score.value);
-    localStorage.setItem('snakeHighScore', String(highScore.value));
-    return;
-  }
-
-  snake.value = [nextHead, ...snake.value];
-
-  if (nextHead.x === apple.value.x && nextHead.y === apple.value.y) {
-    score.value += 1;
-    highScore.value = Math.max(highScore.value, score.value);
-    localStorage.setItem('snakeHighScore', String(highScore.value));
-    randomApple();
-  } else {
-    snake.value.pop();
+  game.value = stepGame(game.value);
+  if (game.value.status === 'game-over' || game.value.status === 'won') {
+    saveHighScore();
+    stopTimer();
+  } else if (game.value.score > highScore.value) {
+    saveHighScore();
   }
 };
 
-const restart = () => {
-  snake.value = initialSnake();
-  apple.value = { x: 22, y: 10 };
-  direction.value = 'right';
-  nextDirection.value = 'right';
-  score.value = 0;
-  gameOver.value = false;
+const startTimer = () => {
+  stopTimer();
+  if (game.value.status === 'running' && !document.hidden) {
+    intervalId = window.setInterval(tick, speed.value);
+  }
+};
+
+const start = () => {
+  if (game.value.status === 'game-over' || game.value.status === 'won') {
+    game.value = restartGame();
+  }
+  game.value = { ...game.value, status: 'running' };
+  startTimer();
+};
+
+const setDirection = (direction: Direction) => {
+  if (game.value.status !== 'running') return;
+  game.value = queueDirection(game.value, direction);
 };
 
 const updateSpeed = (delta: number) => {
   speed.value = Math.min(130, Math.max(35, speed.value + delta));
-  window.clearInterval(intervalId);
-  intervalId = window.setInterval(tick, speed.value);
+  startTimer();
 };
 
 const onKeyDown = (event: KeyboardEvent) => {
@@ -138,40 +110,51 @@ const onKeyDown = (event: KeyboardEvent) => {
     S: 'down',
   };
 
-  if (event.code === 'Space' && gameOver.value) {
-    restart();
+  if (event.code === 'Space') {
+    if (game.value.status !== 'running') {
+      event.preventDefault();
+      start();
+    }
     return;
   }
 
   if (event.key === '+') updateSpeed(-10);
   if (event.key === '-') updateSpeed(10);
 
-  const mappedDirection = keyMap[event.key];
-  if (mappedDirection) {
+  const direction = keyMap[event.key];
+  if (direction) {
     event.preventDefault();
-    setDirection(mappedDirection);
+    setDirection(direction);
   }
 };
 
+const onVisibilityChange = () => {
+  if (document.hidden) stopTimer();
+  else startTimer();
+};
+
 onMounted(() => {
-  highScore.value = Number(localStorage.getItem('snakeHighScore')) || 0;
-  intervalId = window.setInterval(tick, speed.value);
+  readHighScore();
   window.addEventListener('keydown', onKeyDown);
+  document.addEventListener('visibilitychange', onVisibilityChange);
 });
 
 onBeforeUnmount(() => {
-  window.clearInterval(intervalId);
+  stopTimer();
   window.removeEventListener('keydown', onKeyDown);
+  document.removeEventListener('visibilitychange', onVisibilityChange);
 });
 </script>
 
 <template>
-  <section class="container-section flex min-h-screen flex-col items-center justify-center py-0">
+  <section class="container-section flex min-h-screen flex-col items-center justify-center py-24">
+    <h1 class="mb-6 text-4xl font-semibold text-slate-lighter">Snake</h1>
+
     <div
-      class="relative m-5 grid overflow-hidden border-[8px] border-solid text-slate-light"
+      class="relative grid overflow-hidden border-[8px] border-solid text-slate-light"
       :style="boardStyle"
       role="img"
-      aria-label="Snake game board"
+      :aria-label="`Snake game board. Score ${game.score}.`"
     >
       <div
         v-for="cell in cells"
@@ -185,28 +168,81 @@ onBeforeUnmount(() => {
       />
     </div>
 
-    <div class="mt-4 text-center font-mono font-bold text-slate-light">
-      <div class="text-[clamp(12px,2vw,20px)]">
-        HIGH-SCORE: {{ highScore }}&ensp;&ensp;&ensp;&ensp;SCORE: {{ score }}
-      </div>
+    <p class="sr-only" aria-live="polite">{{ liveMessage }}</p>
+    <p class="mt-4 text-center font-mono text-[clamp(12px,2vw,20px)] font-bold text-slate-light">
+      HIGH-SCORE: {{ highScore }}&ensp;&ensp; SCORE: {{ game.score }}
+    </p>
+
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <button
+        v-if="game.status !== 'running'"
+        type="button"
+        class="button-link px-6 py-4"
+        @click="start"
+      >
+        {{ game.status === 'idle' ? 'Start Game' : 'Play Again' }}
+      </button>
+      <template v-else>
+        <button type="button" class="small-button-link min-h-11" @click="updateSpeed(-10)">
+          Increase speed
+        </button>
+        <button type="button" class="small-button-link min-h-11" @click="updateSpeed(10)">
+          Decrease speed
+        </button>
+      </template>
     </div>
 
-    <Transition enter-active-class="transition duration-150" enter-from-class="opacity-0">
-      <div v-if="gameOver" class="mt-8 text-center">
-        <p class="text-3xl font-semibold text-red-400">Game Over</p>
-        <button type="button" class="button-link mt-4" @click="restart">Play Again</button>
-      </div>
-    </Transition>
+    <p
+      v-if="game.status === 'game-over' || game.status === 'won'"
+      class="mt-6 text-3xl font-semibold"
+      :class="game.status === 'won' ? 'text-mint' : 'text-red-400'"
+    >
+      {{ game.status === 'won' ? 'You Won!' : 'Game Over' }}
+    </p>
 
-    <div class="mt-6 text-center font-mono text-[clamp(12px,2vw,20px)] font-bold text-slate-light">
-      <p>
-        <span>A - LEFT - Move Left</span><br />
-        <span>W - UP - Move Up</span><br />
-        <span>S - DOWN - Move Down</span><br />
-        <span>D - RIGHT - More Right</span><br />
-        <span>+ -> Increase Snake Speed</span><br />
-        <span>- -> Decrease Snake Speed</span>
-      </p>
+    <div class="mt-6 grid grid-cols-3 gap-2" aria-label="Touch direction controls">
+      <span aria-hidden="true" />
+      <button
+        type="button"
+        class="small-button-link min-h-11 min-w-11 p-3"
+        :disabled="game.status !== 'running'"
+        aria-label="Move up"
+        @click="setDirection('up')"
+      >
+        ↑
+      </button>
+      <span aria-hidden="true" />
+      <button
+        type="button"
+        class="small-button-link min-h-11 min-w-11 p-3"
+        :disabled="game.status !== 'running'"
+        aria-label="Move left"
+        @click="setDirection('left')"
+      >
+        ←
+      </button>
+      <button
+        type="button"
+        class="small-button-link min-h-11 min-w-11 p-3"
+        :disabled="game.status !== 'running'"
+        aria-label="Move down"
+        @click="setDirection('down')"
+      >
+        ↓
+      </button>
+      <button
+        type="button"
+        class="small-button-link min-h-11 min-w-11 p-3"
+        :disabled="game.status !== 'running'"
+        aria-label="Move right"
+        @click="setDirection('right')"
+      >
+        →
+      </button>
     </div>
+
+    <p class="mt-6 text-center font-mono text-sm font-semibold text-slate-light">
+      Use arrow keys or W/A/S/D to move. Press + or − to change speed. Press Space to start.
+    </p>
   </section>
 </template>

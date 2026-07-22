@@ -1,11 +1,13 @@
-FROM ubuntu:xenial
-ENV DEBIAN_FRONTEND noninteractive
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -q && apt-get install -qy \
-    curl jq \
-    texlive-full \
-    python-pygments gnuplot \
-    make git \
+    make \
+    poppler-utils \
+    texlive-fonts-extra \
+    texlive-latex-extra \
+    texlive-xetex \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /data

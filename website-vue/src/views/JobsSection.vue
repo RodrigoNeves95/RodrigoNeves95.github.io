@@ -26,6 +26,9 @@ const selectPrevious = () => {
 const selectNext = () => {
   void selectJob(activeIndex.value === jobs.length - 1 ? 0 : activeIndex.value + 1);
 };
+
+const selectFirst = () => void selectJob(0);
+const selectLast = () => void selectJob(jobs.length - 1);
 </script>
 
 <template>
@@ -33,38 +36,47 @@ const selectNext = () => {
     <h2 class="section-heading">Where I've Worked</h2>
 
     <div class="flex max-[600px]:block">
-      <ul
-        role="tablist"
-        aria-label="Job tabs"
-        class="job-tabs relative z-[3] m-0 w-max flex-none list-none p-0"
-        @keydown.up.prevent="selectPrevious"
-        @keydown.down.prevent="selectNext"
-        @keydown.left.prevent="selectPrevious"
-        @keydown.right.prevent="selectNext"
-      >
-        <li v-for="(job, index) in jobs" :key="job.company + job.range" class="job-tab-item">
-          <button
-            :id="`job-tab-${index}`"
-            :ref="(element) => setTabRef(element, index)"
-            type="button"
-            role="tab"
-            :aria-selected="activeIndex === index"
-            :aria-controls="`job-panel-${index}`"
-            :tabindex="activeIndex === index ? 0 : -1"
-            class="job-tab-button flex h-[var(--tab-height)] w-full items-center whitespace-nowrap bg-transparent px-5 pb-0.5 text-left font-mono text-[13px] transition hover:bg-navy-light focus:bg-navy-light focus:outline-none max-md:px-[15px] max-[600px]:min-w-[var(--tab-width)] max-[600px]:justify-center max-[600px]:px-[15px] max-[600px]:text-center"
-            :class="activeIndex === index ? 'text-mint' : 'text-slate'"
-            @click="void selectJob(index)"
+      <div class="job-tabs-shell relative z-[3] w-max flex-none">
+        <ul
+          role="tablist"
+          aria-label="Job tabs"
+          class="job-tabs m-0 w-max list-none p-0"
+          @keydown.up.prevent="selectPrevious"
+          @keydown.down.prevent="selectNext"
+          @keydown.left.prevent="selectPrevious"
+          @keydown.right.prevent="selectNext"
+          @keydown.home.prevent="selectFirst"
+          @keydown.end.prevent="selectLast"
+        >
+          <li
+            v-for="(job, index) in jobs"
+            :key="job.company + job.range"
+            role="presentation"
+            class="job-tab-item"
           >
-            <span>{{ job.tab }}</span>
-          </button>
-        </li>
+            <button
+              :id="`job-tab-${index}`"
+              :ref="(element) => setTabRef(element, index)"
+              type="button"
+              role="tab"
+              :aria-selected="activeIndex === index"
+              :aria-controls="`job-panel-${index}`"
+              :tabindex="activeIndex === index ? 0 : -1"
+              class="job-tab-button flex h-[var(--tab-height)] w-full items-center whitespace-nowrap bg-transparent px-5 pb-0.5 text-left font-mono text-[13px] transition hover:bg-navy-light focus:bg-navy-light max-md:px-[15px] max-[600px]:min-w-[var(--tab-width)] max-[600px]:justify-center max-[600px]:px-[15px] max-[600px]:text-center"
+              :class="activeIndex === index ? 'text-mint' : 'text-slate'"
+              @click="void selectJob(index)"
+            >
+              <span>{{ job.tab }}</span>
+            </button>
+          </li>
+        </ul>
 
-        <div
+        <span
           class="job-tab-highlight absolute left-0 top-0 z-10 h-[var(--tab-height)] w-0.5 rounded bg-mint transition-transform duration-200"
           :style="{ '--active-tab': activeIndex }"
           aria-hidden="true"
         />
-      </ul>
+      </div>
 
       <Transition
         mode="out-in"
@@ -136,12 +148,15 @@ const selectNext = () => {
 }
 
 @media (max-width: 600px) {
-  .job-tabs {
-    display: flex;
+  .job-tabs-shell {
     width: calc(100% + 100px);
     margin-left: -50px;
     margin-bottom: 30px;
     overflow-x: auto;
+  }
+
+  .job-tabs {
+    display: flex;
   }
 
   .job-tab-item:first-of-type {
@@ -169,7 +184,7 @@ const selectNext = () => {
 }
 
 @media (max-width: 480px) {
-  .job-tabs {
+  .job-tabs-shell {
     width: calc(100% + 50px);
     margin-left: -25px;
   }

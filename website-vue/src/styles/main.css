@@ -14,8 +14,8 @@
   --white: #ffffff;
   --green: #eca72c;
   --green-tint: rgba(236, 167, 44, 0.1);
-  --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  --font-sans: 'Figtree', -apple-system, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
   --fz-xxs: 12px;
   --fz-xs: 13px;
   --fz-sm: 14px;
@@ -37,63 +37,55 @@
 }
 
 @font-face {
-  font-family: 'Calibre';
-  src:
-    url('@/assets/fonts/Calibre/Calibre-Regular.woff2') format('woff2'),
-    url('@/assets/fonts/Calibre/Calibre-Regular.woff') format('woff');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
+  size-adjust: 88%;
 }
 
 @font-face {
-  font-family: 'Calibre';
-  src:
-    url('@/assets/fonts/Calibre/Calibre-Medium.woff2') format('woff2'),
-    url('@/assets/fonts/Calibre/Calibre-Medium.woff') format('woff');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-500-normal.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
+  size-adjust: 88%;
 }
 
 @font-face {
-  font-family: 'Calibre';
-  src:
-    url('@/assets/fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),
-    url('@/assets/fonts/Calibre/Calibre-Semibold.woff') format('woff');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
+  size-adjust: 88%;
 }
 
 @font-face {
-  font-family: 'Calibre';
-  src:
-    url('@/assets/fonts/Calibre/Calibre-RegularItalic.woff2') format('woff2'),
-    url('@/assets/fonts/Calibre/Calibre-RegularItalic.woff') format('woff');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-400-italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
-  font-display: auto;
+  font-display: swap;
+  size-adjust: 88%;
 }
 
 @font-face {
-  font-family: 'SF Mono';
-  src:
-    url('@/assets/fonts/SFMono/SFMono-Regular.woff2') format('woff2'),
-    url('@/assets/fonts/SFMono/SFMono-Regular.woff') format('woff');
+  font-family: 'IBM Plex Mono';
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Mono';
-  src:
-    url('@/assets/fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),
-    url('@/assets/fonts/SFMono/SFMono-Semibold.woff') format('woff');
+  font-family: 'IBM Plex Mono';
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 html {
@@ -152,6 +144,11 @@ button {
   border: 0;
   border-radius: 0;
   cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 p {
@@ -216,7 +213,7 @@ svg {
   }
 
   .accent-link {
-    @apply relative inline-block text-mint transition hover:text-mint focus:text-mint focus:outline-none;
+    @apply relative inline-block text-mint transition hover:text-mint focus:text-mint;
   }
 
   .accent-link::after {
@@ -230,10 +227,25 @@ svg {
   }
 
   .button-link {
-    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-7 py-5 font-mono text-sm leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-7 py-5 font-mono text-sm leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10;
   }
 
   .small-button-link {
-    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-4 py-3 font-mono text-[13px] leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10 focus:outline-none;
+    @apply inline-flex items-center justify-center rounded border border-mint bg-transparent px-4 py-3 font-mono text-[13px] leading-none text-mint transition hover:bg-mint/10 focus:bg-mint/10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

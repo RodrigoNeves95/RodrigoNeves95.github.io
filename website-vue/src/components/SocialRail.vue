@@ -14,7 +14,7 @@ import { socialLinks } from '@/data/site';
       :aria-label="link.name"
       target="_blank"
       rel="noopener noreferrer"
-      class="p-[10px] transition hover:-translate-y-[3px] hover:text-mint focus:-translate-y-[3px] focus:text-mint focus:outline-none"
+      class="p-[10px] transition hover:-translate-y-[3px] hover:text-mint focus:-translate-y-[3px] focus:text-mint"
     >
       <component :is="link.icon" :size="20" aria-hidden="true" />
     </a>

@@ -1,38 +1,39 @@
-# Content
-Repository to my go-to CV and cover letter with a Latex template that compiles over a docker image.
+# Résumé sources
 
-Work inspired from [https://github.com/sb2nov/resume](https://github.com/sb2nov/resume) and [https://github.com/posquit0/Awesome-CV](https://github.com/posquit0/Awesome-CV)
+Source and generated artifacts for Rodrigo Neves's résumé, plus a customizable LaTeX cover-letter template. The cover letter contains conspicuous placeholders and must be personalized before use.
 
-Example
+The layout is inspired by [sb2nov/resume](https://github.com/sb2nov/resume) and [Awesome-CV](https://github.com/posquit0/Awesome-CV).
 
 ![Resume Screenshot](resume.png)
 
----
+## Commands
 
-## How-to
+Build the résumé from a clean checkout:
 
-There are few steps needed to build and create the CV and the cover letter. First you will need to build the docker image
-
-```
-make build
+```bash
+make resume
 ```
 
-Once this steps concludes you can create your CV or cover letter with the following commands:
+The generated file is written to `build/resume.pdf`. Build a personalized cover letter with:
 
-```
-make cv
-```
-and
-```
-make cover_letter
+```bash
+make cover-letter
 ```
 
-Note: Once the build is done, both commands will try to open the file with [gio](http://manpages.ubuntu.com/manpages/bionic/man1/gio.1.html) CLI. You will find the PDFs inside `resume` folder.
+Publish the generated résumé to both tracked distribution locations:
 
----
-## Small guidelines
+```bash
+make publish-resume
+```
 
-There are two main files inside `resume/` folder, one for the CV(resume.tex) and the other for the cover letter(coverletter.tex). Both of them are fully customazible. Each file has multiple comments, explaining how you can make modifications to the layout and/or content. 
+Verify that the tracked PDFs match each other and the current source:
 
-Regarding the CV there is a specific file for each one of the sections, that you will need to change accorddingly to your will.
+```bash
+make verify
+```
 
+Use `make clean` to remove the temporary `build/` directory. The cover-letter PDF is intentionally ignored by Git. Review and replace every angle-bracketed placeholder in `resume/coverletter.tex` before using it.
+
+## Source layout
+
+The `resume/` directory contains `resume.tex` for the résumé and `coverletter.tex` for the cover-letter template. The résumé has a separate source file for each included section under `resume/files/`.

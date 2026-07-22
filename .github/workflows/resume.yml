@@ -1,0 +1,25 @@
+name: Resume
+
+on:
+  pull_request:
+    branches: [develop]
+    paths:
+      - "resume/**"
+      - "website-vue/public/resume.pdf"
+      - ".github/workflows/resume.yml"
+  push:
+    branches: [develop]
+    paths:
+      - "resume/**"
+      - "website-vue/public/resume.pdf"
+      - ".github/workflows/resume.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make -C resume verify
