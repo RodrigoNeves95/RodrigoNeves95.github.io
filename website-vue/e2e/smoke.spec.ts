@@ -104,7 +104,7 @@ for (const viewport of [
       overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       cls: Number(document.documentElement.dataset.cumulativeLayoutShift ?? 0),
     }));
-    expect(metrics.bodyFont).toContain('Inter');
+    expect(metrics.bodyFont).toContain('Figtree');
     expect(metrics.monoFont).toContain('IBM Plex Mono');
     expect(metrics.overflow).toBeLessThanOrEqual(0);
     expect(metrics.cls).toBeLessThan(0.1);

@@ -14,7 +14,7 @@
   --white: #ffffff;
   --green: #eca72c;
   --green-tint: rgba(236, 167, 44, 0.1);
-  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-sans: 'Figtree', -apple-system, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --fz-xxs: 12px;
   --fz-xs: 13px;
@@ -37,32 +37,32 @@
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('@fontsource/inter/files/inter-latin-400-normal.woff2') format('woff2');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('@fontsource/inter/files/inter-latin-500-normal.woff2') format('woff2');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-500-normal.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('@fontsource/inter/files/inter-latin-600-normal.woff2') format('woff2');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('@fontsource/inter/files/inter-latin-400-italic.woff2') format('woff2');
+  font-family: 'Figtree';
+  src: url('@fontsource/figtree/files/figtree-latin-400-italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;

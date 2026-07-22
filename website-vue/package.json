@@ -17,8 +17,8 @@
     "check": "prettier --check . && eslint . && vue-tsc -b && vitest run && node --test scripts/generate-static-routes.test.mjs && playwright test"
   },
   "dependencies": {
+    "@fontsource/figtree": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
-    "@fontsource/inter": "^5.3.0",
     "lucide-vue-next": "^0.468.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
